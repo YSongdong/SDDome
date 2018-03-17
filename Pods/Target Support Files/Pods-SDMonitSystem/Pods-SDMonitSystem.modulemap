@@ -1,0 +1,6 @@
+framework module Pods_SDMonitSystem {
+  umbrella header "Pods-SDMonitSystem-umbrella.h"
+
+  export *
+  module * { export * }
+}
