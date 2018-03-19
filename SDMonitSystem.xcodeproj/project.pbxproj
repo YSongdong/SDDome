@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15074E052059190700D50F9C /* ZSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 15074E032059190600D50F9C /* ZSLoading.m */; };
+		15046377205F7B0800519501 /* DetaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15046376205F7B0800519501 /* DetaTableViewCell.m */; };
+		1504637D205F80F600519501 /* YHWorkGroupPhotoContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 15046379205F80F500519501 /* YHWorkGroupPhotoContainer.m */; };
+		15046387205F90B300519501 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15046386205F90B300519501 /* SDBrowserImageView.m */; };
+		1504638A205F90BA00519501 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 15046389205F90BA00519501 /* SDPhotoBrowser.m */; };
+		1504638E205F90C400519501 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1504638C205F90C300519501 /* SDWaitingView.m */; };
 		150793A7201F111E00EAA3CD /* ShowCalenarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 150793A6201F111E00EAA3CD /* ShowCalenarView.m */; };
 		150793C9201F11B200EAA3CD /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 150793A9201F11B200EAA3CD /* FSCalendar+Deprecated.m */; };
 		150793CA201F11B200EAA3CD /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 150793AB201F11B200EAA3CD /* FSCalendar.m */; };
@@ -31,6 +35,9 @@
 		15113D5A2057B87E004F6219 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D592057B87E004F6219 /* OpenGLES.framework */; };
 		15113D5C2057B888004F6219 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D5B2057B888004F6219 /* QuartzCore.framework */; };
 		15113D5E2057B897004F6219 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D5D2057B897004F6219 /* UIKit.framework */; };
+		151552CD205DF4CF00EEC12E /* DetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 151552CC205DF4CF00EEC12E /* DetaViewController.m */; };
+		151552D0205E010300EEC12E /* PlayerToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 151552CF205E010300EEC12E /* PlayerToolView.m */; };
+		151E3B85206002BF00EEEBE5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 151E3B84206002BF00EEEBE5 /* Reachability.m */; };
 		152B075F2021697A00766B7A /* SumgraphModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B075E2021697A00766B7A /* SumgraphModel.m */; };
 		152B07622021941700766B7A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B07612021941700766B7A /* UserInfo.m */; };
 		152B07972021C70800766B7A /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B076B2021C70800766B7A /* MJRefreshAutoFooter.m */; };
@@ -94,11 +101,7 @@
 		155CFD9A20157D3600EDD53D /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFD9920157D3600EDD53D /* UserInfoView.m */; };
 		155CFD9E20157D4000EDD53D /* MonitorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155CFD9B20157D4000EDD53D /* MonitorTableViewCell.xib */; };
 		155CFD9F20157D4000EDD53D /* MonitorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFD9D20157D4000EDD53D /* MonitorTableViewCell.m */; };
-		155CFDA220157D8000EDD53D /* ProDetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFDA020157D8000EDD53D /* ProDetaViewController.m */; };
 		155CFDA520157DB100EDD53D /* ProTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFDA420157DB100EDD53D /* ProTableHeaderView.m */; };
-		155CFDA920157DBA00EDD53D /* ProDetaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155CFDA620157DBA00EDD53D /* ProDetaTableViewCell.xib */; };
-		155CFDAA20157DBA00EDD53D /* ProDetaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFDA720157DBA00EDD53D /* ProDetaTableViewCell.m */; };
-		155CFDAD20157DD400EDD53D /* TXLitePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFDAC20157DD400EDD53D /* TXLitePlayView.m */; };
 		155CFDB920157E5100EDD53D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155CFDB820157E5100EDD53D /* Foundation.framework */; };
 		155CFDBB20157E5D00EDD53D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155CFDBA20157E5D00EDD53D /* AVFoundation.framework */; };
 		155CFDBD20157E6700EDD53D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155CFDBC20157E6700EDD53D /* MediaPlayer.framework */; };
@@ -128,7 +131,6 @@
 		155CFE032015860600EDD53D /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE022015860600EDD53D /* ProjectViewController.m */; };
 		155CFE072015867000EDD53D /* ProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE052015867000EDD53D /* ProjectTableViewCell.m */; };
 		155CFE082015867000EDD53D /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155CFE062015867000EDD53D /* ProjectTableViewCell.xib */; };
-		155CFE0F2015911600EDD53D /* VodPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE0E2015911600EDD53D /* VodPlayView.m */; };
 		155CFE142015913300EDD53D /* KRMainNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE122015913200EDD53D /* KRMainNetTool.m */; };
 		155CFE272015943800EDD53D /* ProjectCountNumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155CFE1B2015943700EDD53D /* ProjectCountNumTableViewCell.xib */; };
 		155CFE292015943800EDD53D /* ProjectCountNumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE1E2015943700EDD53D /* ProjectCountNumTableViewCell.m */; };
@@ -136,6 +138,7 @@
 		155CFE2E2015943800EDD53D /* RuleCountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155CFE262015943800EDD53D /* RuleCountTableViewCell.xib */; };
 		155CFE5F201595B100EDD53D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE5E201595B100EDD53D /* LoginViewController.m */; };
 		155CFE622015BDA900EDD53D /* ForgatPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE612015BDA900EDD53D /* ForgatPwdViewController.m */; };
+		15A33585205EA4D100A0B917 /* ChekImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A33584205EA4D100A0B917 /* ChekImageView.m */; };
 		15B66618202C1C53001E025D /* ShowSpaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B66617202C1C53001E025D /* ShowSpaceView.m */; };
 		15D0CADD204806050077815C /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D0CABD204806050077815C /* MKAnnotationView+WebCache.m */; };
 		15D0CADE204806050077815C /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D0CABF204806050077815C /* NSData+ImageContentType.m */; };
@@ -197,8 +200,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		15074E032059190600D50F9C /* ZSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSLoading.m; sourceTree = "<group>"; };
-		15074E042059190700D50F9C /* ZSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSLoading.h; sourceTree = "<group>"; };
+		15046375205F7B0800519501 /* DetaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetaTableViewCell.h; sourceTree = "<group>"; };
+		15046376205F7B0800519501 /* DetaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetaTableViewCell.m; sourceTree = "<group>"; };
+		15046379205F80F500519501 /* YHWorkGroupPhotoContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWorkGroupPhotoContainer.m; sourceTree = "<group>"; };
+		1504637A205F80F500519501 /* YHWorkGroupPhotoContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWorkGroupPhotoContainer.h; sourceTree = "<group>"; };
+		15046385205F90B300519501 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		15046386205F90B300519501 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		15046388205F90BA00519501 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		15046389205F90BA00519501 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		1504638B205F90BE00519501 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		1504638C205F90C300519501 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
+		1504638D205F90C300519501 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
 		150793A5201F111D00EAA3CD /* ShowCalenarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCalenarView.h; sourceTree = "<group>"; };
 		150793A6201F111E00EAA3CD /* ShowCalenarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCalenarView.m; sourceTree = "<group>"; };
 		150793A9201F11B200EAA3CD /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -240,6 +252,12 @@
 		15113D592057B87E004F6219 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		15113D5B2057B888004F6219 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		15113D5D2057B897004F6219 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		151552CB205DF4CF00EEC12E /* DetaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetaViewController.h; sourceTree = "<group>"; };
+		151552CC205DF4CF00EEC12E /* DetaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetaViewController.m; sourceTree = "<group>"; };
+		151552CE205E010300EEC12E /* PlayerToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerToolView.h; sourceTree = "<group>"; };
+		151552CF205E010300EEC12E /* PlayerToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerToolView.m; sourceTree = "<group>"; };
+		151E3B83206002BF00EEEBE5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		151E3B84206002BF00EEEBE5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		152B075D2021697A00766B7A /* SumgraphModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SumgraphModel.h; sourceTree = "<group>"; };
 		152B075E2021697A00766B7A /* SumgraphModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SumgraphModel.m; sourceTree = "<group>"; };
 		152B07602021941700766B7A /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
@@ -366,15 +384,8 @@
 		155CFD9B20157D4000EDD53D /* MonitorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonitorTableViewCell.xib; sourceTree = "<group>"; };
 		155CFD9C20157D4000EDD53D /* MonitorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorTableViewCell.h; sourceTree = "<group>"; };
 		155CFD9D20157D4000EDD53D /* MonitorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitorTableViewCell.m; sourceTree = "<group>"; };
-		155CFDA020157D8000EDD53D /* ProDetaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDetaViewController.m; sourceTree = "<group>"; };
-		155CFDA120157D8000EDD53D /* ProDetaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDetaViewController.h; sourceTree = "<group>"; };
 		155CFDA320157DB100EDD53D /* ProTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProTableHeaderView.h; sourceTree = "<group>"; };
 		155CFDA420157DB100EDD53D /* ProTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProTableHeaderView.m; sourceTree = "<group>"; };
-		155CFDA620157DBA00EDD53D /* ProDetaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProDetaTableViewCell.xib; sourceTree = "<group>"; };
-		155CFDA720157DBA00EDD53D /* ProDetaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDetaTableViewCell.m; sourceTree = "<group>"; };
-		155CFDA820157DBA00EDD53D /* ProDetaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDetaTableViewCell.h; sourceTree = "<group>"; };
-		155CFDAB20157DD400EDD53D /* TXLitePlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLitePlayView.h; sourceTree = "<group>"; };
-		155CFDAC20157DD400EDD53D /* TXLitePlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXLitePlayView.m; sourceTree = "<group>"; };
 		155CFDB820157E5100EDD53D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		155CFDBA20157E5D00EDD53D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		155CFDBC20157E6700EDD53D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -421,8 +432,6 @@
 		155CFE042015867000EDD53D /* ProjectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectTableViewCell.h; sourceTree = "<group>"; };
 		155CFE052015867000EDD53D /* ProjectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectTableViewCell.m; sourceTree = "<group>"; };
 		155CFE062015867000EDD53D /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
-		155CFE0D2015911600EDD53D /* VodPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VodPlayView.h; sourceTree = "<group>"; };
-		155CFE0E2015911600EDD53D /* VodPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VodPlayView.m; sourceTree = "<group>"; };
 		155CFE112015913200EDD53D /* KRMainNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRMainNetTool.h; sourceTree = "<group>"; };
 		155CFE122015913200EDD53D /* KRMainNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRMainNetTool.m; sourceTree = "<group>"; };
 		155CFE132015913200EDD53D /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
@@ -437,6 +446,8 @@
 		155CFE602015BDA900EDD53D /* ForgatPwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgatPwdViewController.h; sourceTree = "<group>"; };
 		155CFE612015BDA900EDD53D /* ForgatPwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgatPwdViewController.m; sourceTree = "<group>"; };
 		1564F957201F0DFF00CFD7FB /* SystemURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemURL.h; sourceTree = "<group>"; };
+		15A33583205EA4D100A0B917 /* ChekImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChekImageView.h; sourceTree = "<group>"; };
+		15A33584205EA4D100A0B917 /* ChekImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChekImageView.m; sourceTree = "<group>"; };
 		15B66616202C1C53001E025D /* ShowSpaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowSpaceView.h; sourceTree = "<group>"; };
 		15B66617202C1C53001E025D /* ShowSpaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowSpaceView.m; sourceTree = "<group>"; };
 		15D0CABC204806050077815C /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -547,6 +558,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15046384205F909300519501 /* SDPhoneBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				1504638D205F90C300519501 /* SDWaitingView.h */,
+				1504638C205F90C300519501 /* SDWaitingView.m */,
+				1504638B205F90BE00519501 /* SDPhotoBrowserConfig.h */,
+				15046388205F90BA00519501 /* SDPhotoBrowser.h */,
+				15046389205F90BA00519501 /* SDPhotoBrowser.m */,
+				15046385205F90B300519501 /* SDBrowserImageView.h */,
+				15046386205F90B300519501 /* SDBrowserImageView.m */,
+			);
+			path = SDPhoneBrowser;
+			sourceTree = "<group>";
+		};
 		150793A8201F11B200EAA3CD /* FSCalender */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,6 +784,8 @@
 		155664FE2022FF580000E78B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				151E3B83206002BF00EEEBE5 /* Reachability.h */,
+				151E3B84206002BF00EEEBE5 /* Reachability.m */,
 				152B07602021941700766B7A /* UserInfo.h */,
 				152B07612021941700766B7A /* UserInfo.m */,
 				15B66616202C1C53001E025D /* ShowSpaceView.h */,
@@ -904,8 +931,8 @@
 				155CFD8220157A9400EDD53D /* MineMonitViewController.m */,
 				155CFE012015860600EDD53D /* ProjectViewController.h */,
 				155CFE022015860600EDD53D /* ProjectViewController.m */,
-				155CFDA120157D8000EDD53D /* ProDetaViewController.h */,
-				155CFDA020157D8000EDD53D /* ProDetaViewController.m */,
+				151552CB205DF4CF00EEC12E /* DetaViewController.h */,
+				151552CC205DF4CF00EEC12E /* DetaViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -941,6 +968,7 @@
 		155CFD9520157D1E00EDD53D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15046384205F909300519501 /* SDPhoneBrowser */,
 				155CFD9720157D2F00EDD53D /* Cell */,
 				155CFD9620157D2A00EDD53D /* View */,
 			);
@@ -950,20 +978,20 @@
 		155CFD9620157D2A00EDD53D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				15074E042059190700D50F9C /* ZSLoading.h */,
-				15074E032059190600D50F9C /* ZSLoading.m */,
 				15336846202FD16F0026EDB7 /* ZYLButton.h */,
 				15336847202FD16F0026EDB7 /* ZYLButton.m */,
-				155CFE0D2015911600EDD53D /* VodPlayView.h */,
-				155CFE0E2015911600EDD53D /* VodPlayView.m */,
-				155CFDAB20157DD400EDD53D /* TXLitePlayView.h */,
-				155CFDAC20157DD400EDD53D /* TXLitePlayView.m */,
 				155CFDA320157DB100EDD53D /* ProTableHeaderView.h */,
 				155CFDA420157DB100EDD53D /* ProTableHeaderView.m */,
 				155CFD9820157D3600EDD53D /* UserInfoView.h */,
 				155CFD9920157D3600EDD53D /* UserInfoView.m */,
 				15443A2920185FBC0011E745 /* VideoHideView.h */,
 				15443A2A20185FBC0011E745 /* VideoHideView.m */,
+				151552CE205E010300EEC12E /* PlayerToolView.h */,
+				151552CF205E010300EEC12E /* PlayerToolView.m */,
+				15A33583205EA4D100A0B917 /* ChekImageView.h */,
+				15A33584205EA4D100A0B917 /* ChekImageView.m */,
+				1504637A205F80F500519501 /* YHWorkGroupPhotoContainer.h */,
+				15046379205F80F500519501 /* YHWorkGroupPhotoContainer.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -977,9 +1005,8 @@
 				155CFE042015867000EDD53D /* ProjectTableViewCell.h */,
 				155CFE052015867000EDD53D /* ProjectTableViewCell.m */,
 				155CFE062015867000EDD53D /* ProjectTableViewCell.xib */,
-				155CFDA820157DBA00EDD53D /* ProDetaTableViewCell.h */,
-				155CFDA720157DBA00EDD53D /* ProDetaTableViewCell.m */,
-				155CFDA620157DBA00EDD53D /* ProDetaTableViewCell.xib */,
+				15046375205F7B0800519501 /* DetaTableViewCell.h */,
+				15046376205F7B0800519501 /* DetaTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1338,7 +1365,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				155CFE272015943800EDD53D /* ProjectCountNumTableViewCell.xib in Resources */,
-				155CFDA920157DBA00EDD53D /* ProDetaTableViewCell.xib in Resources */,
 				152B07A52021C70800766B7A /* MJRefresh.bundle in Resources */,
 				155CFD9E20157D4000EDD53D /* MonitorTableViewCell.xib in Resources */,
 				155CFE2E2015943800EDD53D /* RuleCountTableViewCell.xib in Resources */,
@@ -1536,6 +1562,8 @@
 				152B07A42021C70800766B7A /* MJRefreshStateHeader.m in Sources */,
 				1536321D2019C92800270889 /* SelectTimeHeaderView.m in Sources */,
 				155CFE622015BDA900EDD53D /* ForgatPwdViewController.m in Sources */,
+				1504638A205F90BA00519501 /* SDPhotoBrowser.m in Sources */,
+				1504638E205F90C400519501 /* SDWaitingView.m in Sources */,
 				154612F7201F270B006A1A4F /* SVRadialGradientLayer.m in Sources */,
 				155665062022FF6D0000E78B /* SymbolsValueFormatter.m in Sources */,
 				150793D4201F11B200EAA3CD /* FSCalendarHeaderView.m in Sources */,
@@ -1545,12 +1573,14 @@
 				15505FCE201708500038F81F /* UIViewController+Cloudox.m in Sources */,
 				152B07992021C70800766B7A /* MJRefreshComponent.m in Sources */,
 				152B07982021C70800766B7A /* MJRefreshBackFooter.m in Sources */,
+				1504637D205F80F600519501 /* YHWorkGroupPhotoContainer.m in Sources */,
 				155665072022FF6D0000E78B /* SetValueFormatter.m in Sources */,
 				152B075F2021697A00766B7A /* SumgraphModel.m in Sources */,
 				155CFD562015796200EDD53D /* main.m in Sources */,
 				15D0CAE1204806050077815C /* SDWebImageDecoder.m in Sources */,
 				15D0CAE8204806050077815C /* UIImage+MultiFormat.m in Sources */,
 				15D0CAE6204806050077815C /* UIButton+WebCache.m in Sources */,
+				15046377205F7B0800519501 /* DetaTableViewCell.m in Sources */,
 				152B07A32021C70800766B7A /* MJRefreshNormalHeader.m in Sources */,
 				150793D3201F11B200EAA3CD /* FSCalendarExtensions.m in Sources */,
 				150793CB201F11B200EAA3CD /* FSCalendarAppearance.m in Sources */,
@@ -1563,14 +1593,14 @@
 				155CFE142015913300EDD53D /* KRMainNetTool.m in Sources */,
 				154612F3201F270B006A1A4F /* SVIndefiniteAnimatedView.m in Sources */,
 				155CFD7E20157A5700EDD53D /* RootNaviController.m in Sources */,
+				15046387205F90B300519501 /* SDBrowserImageView.m in Sources */,
 				152B07AA2021C70800766B7A /* UIView+MJExtension.m in Sources */,
 				155CFDF520157F5700EDD53D /* MASCompositeConstraint.m in Sources */,
 				15D0CADF204806050077815C /* SDImageCache.m in Sources */,
-				155CFDAA20157DBA00EDD53D /* ProDetaTableViewCell.m in Sources */,
 				155CFDF720157F5700EDD53D /* MASConstraintMaker.m in Sources */,
 				15F722A820298FCC008BE635 /* DVLineChartView.m in Sources */,
 				150793D7201F11B200EAA3CD /* FSCalendarTransitionCoordinator.m in Sources */,
-				15074E052059190700D50F9C /* ZSLoading.m in Sources */,
+				151552D0205E010300EEC12E /* PlayerToolView.m in Sources */,
 				150793DC201F11BC00EAA3CD /* RangePickerCell.m in Sources */,
 				152B079C2021C70800766B7A /* MJRefreshAutoGifFooter.m in Sources */,
 				155CFDFD20157F5700EDD53D /* View+MASAdditions.m in Sources */,
@@ -1591,6 +1621,7 @@
 				152B079D2021C70800766B7A /* MJRefreshAutoNormalFooter.m in Sources */,
 				150793A7201F111E00EAA3CD /* ShowCalenarView.m in Sources */,
 				155665052022FF6D0000E78B /* DateValueFormatter.m in Sources */,
+				15A33585205EA4D100A0B917 /* ChekImageView.m in Sources */,
 				150793CA201F11B200EAA3CD /* FSCalendar.m in Sources */,
 				15505FD12017196D0038F81F /* AboutOurViewController.m in Sources */,
 				150793CC201F11B200EAA3CD /* FSCalendarCalculator.m in Sources */,
@@ -1604,7 +1635,6 @@
 				15D0CAE4204806050077815C /* SDWebImageManager.m in Sources */,
 				150793D0201F11B200EAA3CD /* FSCalendarConstants.m in Sources */,
 				155C09102015D76500EDD53D /* HWWeakTimer.m in Sources */,
-				155CFE0F2015911600EDD53D /* VodPlayView.m in Sources */,
 				15505FCD201708500038F81F /* UINavigationController+Cloudox.m in Sources */,
 				1536321A2019BE4600270889 /* NaviTitleView.m in Sources */,
 				15D0CAEA204806050077815C /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1619,13 +1649,13 @@
 				152B079F2021C70800766B7A /* MJRefreshBackGifFooter.m in Sources */,
 				15F722A620298FCC008BE635 /* DVPlot.m in Sources */,
 				152B07A02021C70800766B7A /* MJRefreshBackNormalFooter.m in Sources */,
+				151552CD205DF4CF00EEC12E /* DetaViewController.m in Sources */,
 				155CFE2A2015943800EDD53D /* RuleCountTableViewCell.m in Sources */,
 				15443A2B20185FBC0011E745 /* VideoHideView.m in Sources */,
 				155CFD9420157C1500EDD53D /* UIColor+ColorChange.m in Sources */,
 				155CFDFB20157F5700EDD53D /* NSArray+MASAdditions.m in Sources */,
 				15505FC52016E2A50038F81F /* AlterPwdViewController.m in Sources */,
 				152B07A62021C70800766B7A /* MJRefreshConst.m in Sources */,
-				155CFDA220157D8000EDD53D /* ProDetaViewController.m in Sources */,
 				152B079B2021C70800766B7A /* MJRefreshHeader.m in Sources */,
 				155CFDFA20157F5700EDD53D /* MASViewConstraint.m in Sources */,
 				15336848202FD1700026EDB7 /* ZYLButton.m in Sources */,
@@ -1636,7 +1666,6 @@
 				150793D8201F11B200EAA3CD /* FSCalendarWeekdayView.m in Sources */,
 				150793CD201F11B200EAA3CD /* FSCalendarCell.m in Sources */,
 				152B07A12021C70800766B7A /* MJRefreshBackStateFooter.m in Sources */,
-				155CFDAD20157DD400EDD53D /* TXLitePlayView.m in Sources */,
 				155CFDF820157F5700EDD53D /* MASLayoutConstraint.m in Sources */,
 				15F722A720298FCC008BE635 /* DVYAxisView.m in Sources */,
 				155CFE5F201595B100EDD53D /* LoginViewController.m in Sources */,
@@ -1644,6 +1673,7 @@
 				150793CE201F11B200EAA3CD /* FSCalendarCollectionView.m in Sources */,
 				15D0CADD204806050077815C /* MKAnnotationView+WebCache.m in Sources */,
 				154612F4201F270B006A1A4F /* SVProgressAnimatedView.m in Sources */,
+				151E3B85206002BF00EEEBE5 /* Reachability.m in Sources */,
 				15D0CAE0204806050077815C /* SDWebImageCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -50,7 +50,6 @@ singleton_implementation(KRMainNetTool)
        
       //判断返回的状态，0即为服务器查询成功，1服务器查询失败
       NSNumber  *code = responseObject[@"code"];
-       NSLog(@"-------code == %@----",code);
          if ([code integerValue]  == 2) {
             //会话不存在从新登陆
             NSUserDefaults *userd = [NSUserDefaults standardUserDefaults];
@@ -60,12 +59,13 @@ singleton_implementation(KRMainNetTool)
                
                 if (!error) {
                     [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    
                         //请求成功，隐藏HUD并销毁
                         dispatch_async(dispatch_get_main_queue(), ^{
                             
                             [HUD hideAnimated:YES];
                         });
-                        NSNumber *code = responseObject[@"code"];
+                        NSNumber *code = showdata[@"code"];
                         if ([code integerValue] == 0) {
                             NSDictionary *dict = showdata[@"data"];
                             // 保存用户信息

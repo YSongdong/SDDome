@@ -7,7 +7,7 @@
 //
 
 #import "ProjectViewController.h"
-#import "ProDetaViewController.h"
+#import "DetaViewController.h"
 #import "ShowSpaceView.h"
 #import "ProjectTableViewCell.h"
 #define PROJECTTABLEVIEW_CELL  @"ProjectTableViewCell"
@@ -98,19 +98,22 @@
     self.hidesBottomBarWhenPushed = YES;
     NSDictionary *dict =self.dataArr[indexPath.row];
     
-    ProDetaViewController *DetaVC = [[ProDetaViewController alloc]init];
-    DetaVC.deviceID = dict[@"did"];
-    DetaVC.titleStr = dict[@"name"];
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    DetaViewController *detaVC = [[DetaViewController alloc]init];
     
+    //项目ID
+    detaVC.projectID = self.projectID;
+    
+    detaVC.deviceID = dict[@"did"];
+   
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"did"] = dict[@"did"];
     param[@"name"] = dict[@"name"];
     param[@"vid"] = dict[@"vid"];
     param[@"way"] = dict[@"way"];
     param[@"header_img"] = dict[@"header_img"];
-    DetaVC.dict = param.copy;
+    detaVC.dict = param.copy;
     
-    [self.navigationController pushViewController:DetaVC animated:YES];
+    [self.navigationController pushViewController:detaVC animated:YES];
 }
 #pragma mark ----数据相关------
 //请求数据

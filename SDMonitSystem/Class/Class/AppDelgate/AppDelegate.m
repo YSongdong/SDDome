@@ -13,7 +13,7 @@
 #import "LoginViewController.h"
 #import "CustTableBarController.h"
 #import "RootNaviController.h"
-
+#import "Reachability.h"
 @interface AppDelegate ()
 
 @end
@@ -29,9 +29,36 @@
     [self setupRootView];
     
     //判断网络状态
-    [self monitorNetworking];
 
+    //注册通知，异步加载，判断网络连接情况
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    Reachability *reachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    [reachability startNotifier];
+    
     return YES;
+}
+
+/**
+ *此函数通过判断联网方式，通知给用户
+ */
+- (void)reachabilityChanged:(NSNotification *)notification
+{
+    Reachability *curReachability = [notification object];
+    NSParameterAssert([curReachability isKindOfClass:[Reachability class]]);
+    NetworkStatus curStatus = [curReachability currentReachabilityStatus];
+    
+    if(curStatus == NotReachable) {
+        //没有网
+        NSDictionary *dic = @{@"netwrok":@"NO"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NetWorkStatu" object:nil userInfo:dic];
+    }else  if(curStatus == ReachableViaWiFi) {
+        //WIFI
+        NSDictionary *dic = @{@"netwrok":@"WIFI"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NetWorkStatu" object:nil userInfo:dic];
+    }else if(curStatus == ReachableViaWWAN) {
+        NSDictionary *dic = @{@"netwrok":@"GPRS"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NetWorkStatu" object:nil userInfo:dic];
+    }
 }
 //进入程序
 -(void) setupRootView{
@@ -49,22 +76,7 @@
         _window.rootViewController = naviVC;
     }
 }
-//判断网络状态
-- (void)monitorNetworking
-{
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"NetWorkStatu" object:nil userInfo:@{@"netwrok":@"WIFI"}];
-        }else if (status == AFNetworkReachabilityStatusReachableViaWWAN) {
-            //GPRS网络
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"NetWorkStatu" object:nil userInfo:@{@"netwrok":@"GPRS"}];
-        }else{
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"NetWorkStatu" object:nil userInfo:@{@"netwrok":@"NO"}];
-        }
-        
-    }];
-}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
  
 }

@@ -8,8 +8,7 @@
 
 #import "RootNaviController.h"
 
-#import "ProDetaViewController.h"
-
+#import "DetaViewController.h"
 @interface RootNaviController () 
 
 @end
@@ -22,7 +21,7 @@
 }
 -(BOOL)shouldAutorotate{
     
-    if ([self.topViewController isKindOfClass:[ProDetaViewController class]]) {
+    if ([self.topViewController isKindOfClass:[DetaViewController class]]) {
         return YES;
     }
     return self.topViewController.shouldAutorotate;
@@ -30,7 +29,7 @@
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     
-    if ([self.topViewController isKindOfClass:[ProDetaViewController class]]) {
+    if ([self.topViewController isKindOfClass:[DetaViewController class]]) {
         return UIInterfaceOrientationMaskAll;
     }
     

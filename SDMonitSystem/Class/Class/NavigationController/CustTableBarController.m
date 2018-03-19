@@ -8,8 +8,7 @@
 
 #import "CustTableBarController.h"
 
-#import "ProDetaViewController.h"
-
+#import "DetaViewController.h"
 @interface CustTableBarController ()
 
 @end
@@ -23,7 +22,7 @@
 }
 -(BOOL)shouldAutorotate{
     
-    if ([self.selectedViewController isKindOfClass:[ProDetaViewController class]]) {
+    if ([self.selectedViewController isKindOfClass:[DetaViewController class]]) {
         return YES;
     }
     return self.selectedViewController.shouldAutorotate;
@@ -31,7 +30,7 @@
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     
-    if ([self.selectedViewController isKindOfClass:[ProDetaViewController class]]) {
+    if ([self.selectedViewController isKindOfClass:[DetaViewController class]]) {
         return UIInterfaceOrientationMaskAll;
     }
     

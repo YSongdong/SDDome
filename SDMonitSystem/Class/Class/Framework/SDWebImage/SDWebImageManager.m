@@ -52,6 +52,7 @@
 }
 
 - (NSString *)cacheKeyForURL:(NSURL *)url {
+    
     if (self.cacheKeyFilter) {
         return self.cacheKeyFilter(url);
     }

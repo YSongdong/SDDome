@@ -1,41 +1,27 @@
 //
-//  TXLitePlayView.m
-//  PlayDemo
+//  PlayerToolView.m
+//  SDMonitSystem
 //
-//  Created by tiao on 2018/1/8.
+//  Created by tiao on 2018/3/18.
 //  Copyright © 2018年 tiao. All rights reserved.
 //
 
-#import "TXLitePlayView.h"
+#import "PlayerToolView.h"
 
-#import "VideoHideView.h"
-#import "ZYLButton.h"
-#import "ZSLoading.h"
+
+
 typedef NS_ENUM(NSUInteger, Direction) {
     DirectionLeftOrRight,
     DirectionUpOrDown,
     DirectionNone
 };
-
-@interface TXLitePlayView () <ZYLButtonDelegate>
-
+@interface PlayerToolView () <ZYLButtonDelegate>
 @property (nonatomic,strong) UIButton  *hpBtn;     //横竖屏按钮
-
 
 @property (weak, nonatomic) UIView *playerView;
 
-//网络判断遮蔽层
-@property (nonatomic,strong) VideoHideView *hideView;
-//暂停播放遮蔽层
-@property (nonatomic,strong) UIView *suspendView;
 ////直播封面遮蔽层image
 @property (nonatomic,strong) UIImageView *suspImage;
-//直播封面遮蔽层播放按钮
-@property (nonatomic,strong) UIButton   *playBtn;
-//标题工具View
-@property (nonatomic,strong) UIView *titleToolView;
-//返回按钮
-@property (nonatomic,strong) UIButton *backBtn;
 
 //手势
 @property (strong, nonatomic) ZYLButton *zylbutton;
@@ -54,35 +40,36 @@ typedef NS_ENUM(NSUInteger, Direction) {
 @property (nonatomic,strong) UIView *toolView;
 //加载
 @property (nonatomic,strong) MBProgressHUD *hup;
-@property (nonatomic,strong)ZSLoading * loading;
+
 @end
 
-@implementation TXLitePlayView
+@implementation PlayerToolView
 
 -(instancetype)initWithFrame:(CGRect)frame{
-    if (self =  [super initWithFrame:frame]) {
-        [self createPlayUI];
+    if (self = [super initWithFrame:frame]) {
+        
+        [self createUI];
     }
     return self;
 }
--(void) createPlayUI{
 
+-(void) createUI{
     __weak typeof(self) weakSelf = self;
     
     self.backGrouView= [[UIView alloc]initWithFrame:self.bounds];
-    self.backGrouView.backgroundColor = [UIColor blackColor];
+    self.backGrouView.backgroundColor = [UIColor clearColor];
     self.backGrouView.alpha = 1;
     [self addSubview:self.backGrouView];
     
     _showView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenW, KSIphonScreenH(220))];
     [self addSubview:_showView];
-
+    
     //封面图
     self.coverImage = [[UIImageView alloc]init];
     self.coverImage.image = [UIImage imageNamed:@"cover"];
     [self addSubview:self.coverImage];
     [self.coverImage mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.top.left.bottom.right.equalTo(weakSelf.showView);
+        make.top.left.bottom.right.equalTo(weakSelf.showView);
     }];
     
     //添加自定义的Button到视频画面上
@@ -100,7 +87,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     // imageView添加手势识别
     [_zylbutton addGestureRecognizer:tapGesture];
-
+    
     //控制层view
     self.coverView = [[UIView alloc]initWithFrame:self.showView.frame];
     [self addSubview:self.coverView];
@@ -147,7 +134,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
         make.right.left.bottom.equalTo(_toolView);
     }];
     backView.backgroundColor =[UIColor clearColor];
- 
+    
     //横屏屏按钮
     _hpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.toolView addSubview:_hpBtn];
@@ -158,22 +145,22 @@ typedef NS_ENUM(NSUInteger, Direction) {
         make.width.height.equalTo(@(KSIphonScreenW(40)));
     }];
     
-//    //加载。。。。。。
-//    self.hup = [[MBProgressHUD alloc]init];
-//    [self addSubview:self.hup];
-//    [self.hup showAnimated:YES];
-//    self.hup.backgroundColor = [UIColor clearColor];
-    
-    _loading = [[ZSLoading alloc]init];
-    [_coverView addSubview:_loading];
-    [_loading mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(100);
+    self.activeView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyleGray)];
+    [_coverView addSubview:self.activeView];
+    //设置小菊花的frame
+    [self.activeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@100);
         make.centerX.equalTo(_coverView.mas_centerX);
         make.centerY.equalTo(_coverView.mas_centerY);
-    
     }];
-    [_coverView layoutIfNeeded];
-    _loading.frame = _loading.frame;
+    //设置小菊花颜色
+    self.activeView.color = [UIColor whiteColor];
+    //设置背景颜色
+    self.volumeViewSlider.backgroundColor = [UIColor clearColor];
+    //刚进入这个界面会显示控件，并且停止旋转也会显示，只是没有在转动而已，没有设置或者设置为YES的时候，刚进入页面不会显示
+    self.activeView.hidesWhenStopped = NO;
+    //开始转动
+    [self.activeView startAnimating];
     
     //暂停播放遮蔽层
     self.suspendView = [[UIView alloc]init];
@@ -181,15 +168,15 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.suspendView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.equalTo(weakSelf.showView);
     }];
-
+    
     self.suspImage = [[UIImageView alloc]init];
     [self.suspendView addSubview:self.suspImage];
     self.suspImage.image = [UIImage imageNamed:@"cover"];
     self.suspImage.userInteractionEnabled = YES;
     [self.suspImage mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.top.left.bottom.right.equalTo(weakSelf.suspendView);
+        make.top.left.bottom.right.equalTo(weakSelf.suspendView);
     }];
-
+    
     self.playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.suspImage addSubview:self.playBtn];
     [self.playBtn setImage:[UIImage imageNamed:@"play_big"] forState:UIControlStateNormal];
@@ -198,9 +185,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
         make.center.equalTo(_coverImage);
     }];
     [self.playBtn addTarget:self action:@selector(palyBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     self.suspendView.hidden = YES;
-
+    
     // 判断网络层
     self.hideView = [[VideoHideView alloc]init];
     [self addSubview:self.hideView];
@@ -208,8 +195,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
         make.top.left.bottom.right.equalTo(weakSelf.showView);
     }];
     self.hideView.hideBlock = ^{
-
-        [weakSelf txlResume];
+        
+        weakSelf.btnBlock(YES);
+        //[weakSelf txlResume];
     };
     //关闭viwe
     self.hideView.backBlock = ^{
@@ -220,38 +208,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     //网络判断
     [KRMainNetTool ysy_hasNetwork:^(NSString *net) {
-      
+        
         [weakSelf alterNetWork:net];
     }];
- 
+   
 }
-#pragma mark-初始化playerView
--(void)setupPlayerView{
-    //播放器
-    IJKFFOptions *options = [IJKFFOptions optionsByDefault]; //使用默认配置
-    
-    [options setFormatOptionValue:@"tcp" forKey:@"rtsp_transport"];
-    
-    [options setOptionIntValue:2 forKey:@"videotoolbox" ofCategory:kIJKFFOptionCategoryPlayer];
-    
-    _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:self.url] withOptions:options];
-    
-    UIView *playerView = [self.player view];
-    
-    self.playerView = _showView;
-  
-    playerView.frame = self.showView.frame;
-    playerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.playerView insertSubview:playerView atIndex:0];
-   //缩放模式为FILL
-  //  [_player setScalingMode:IJKMPMovieScalingModeAspectFit];
-    self.player.shouldAutoplay = NO;
-    [self.player prepareToPlay];
-    [self installMovieNotificationObservers];
-    
-}
-
 //判断网络状态
 -(void) alterNetWork:(NSString *)workStau {
     //隐藏返回按钮
@@ -261,11 +222,17 @@ typedef NS_ENUM(NSUInteger, Direction) {
         if ([workStau isEqualToString:@"WIFI"]) {
             self.hideView.hidden = YES;
             //继续播放
-            [self txlResume];
-            
+            self.btnBlock(YES);
+            //开始转动
+            [self.activeView startAnimating];
+            //显示菊花
+            self.activeView.hidesWhenStopped = NO;
         }else{
             //暂停播放
-            [self txlPause];
+            self.btnBlock(NO);
+             
+            //显示菊花
+            self.activeView.hidesWhenStopped = YES;
             
             self.hideView.hidden = NO;
             self.hideView.hideLab.text = @"使用手机流量会产生资费，是否继续播放!";
@@ -273,12 +240,16 @@ typedef NS_ENUM(NSUInteger, Direction) {
     }else{
         self.hideView.hidden = NO;
         if ([self.url isEqualToString:@""]) {
-           self.hideView.hideLab.text = @"暂无视频！";
+            self.hideView.hideLab.text = @"暂无视频！";
         }else{
-           self.hideView.hideLab.text = @"没有网络，请重新连接网络！";
+            self.hideView.hideLab.text = @"没有网络，请重新连接网络！";
         }
         self.hideView.palyBtn.hidden = YES;
-        [self endStopPlay];
+        self.btnBlock(NO);
+        //停止转动
+        [self.activeView stopAnimating];
+        //显示菊花
+        self.activeView.hidesWhenStopped = NO;
     }
 }
 #pragma mark------点击了playerView-----------
@@ -324,13 +295,13 @@ typedef NS_ENUM(NSUInteger, Direction) {
 //返回按钮点击方法
 -(void)selectdCloseBtnAction:(UIButton *)sender{
     
-     // 隐藏titleview
-     self.titleToolView.hidden = YES;
-     sender.selected = NO;
+    // 隐藏titleview
+    self.titleToolView.hidden = YES;
+    sender.selected = NO;
     // 隐藏背景色
-     self.backGrouView.hidden = YES;
-    
-     self.btnBlock(sender.selected);
+    self.backGrouView.hidden = YES;
+    //全屏下返回按钮
+    self.backBlock(YES);
 }
 //横屏
 -(void)selectdHPBtnAction:(UIButton *) sender{
@@ -350,16 +321,13 @@ typedef NS_ENUM(NSUInteger, Direction) {
     }
     // 隐藏titleview
     self.titleToolView.hidden = !sender.selected;
-    self.btnBlock(sender.selected);
+    //是否全屏 YES 全屏 NO 竖屏
+    self.hpBlock(sender.selected);
 }
--(void)setUrl:(NSString *)url{
-    _url = url;
-    
-    [self setupPlayerView ];
-}
+
 //暂停播放
 -(void) txlPause{
-    [self.player pause];
+   // [self.player pause];
     //显示播放遮蔽层
     self.suspendView.hidden = NO;
     self.playBtn.hidden = NO;
@@ -367,47 +335,27 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 //恢复播放
 -(void) txlResume{
-
+    
     self.hideView.hidden = YES;
     
     self.suspendView.hidden = YES;
     
-    [self.player play];
+   // [self.player play];
     
-}
-
-//结束播放
--(void)endStopPlay{
-
-    [_player stop];
-    [_player shutdown];
 }
 
 //继续播放
 -(void)palyBtnAction:(UIButton *) sender{
     self.coverImage.hidden = YES;
     //隐藏加载条
-    _loading.hidden = YES;
-
+    self.activeView.hidesWhenStopped = YES;
+    [self.activeView stopAnimating];
+    
     self.hideView.hidden = YES;
     //继续播放
-    [self txlResume];
+    self.btnBlock(YES);
     
 }
-//销毁播放器及组件
--(void) releasePlayer{
-
-    [_loading removeFromSuperview];
-    [_player shutdown];
-    _player = nil;
-    [_player.view removeFromSuperview];
-    [_backGrouView removeFromSuperview];
-    [_showView removeFromSuperview];
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-
-}
-
-
 #pragma mark -----手势-------
 #pragma mark  -- 音量
 #pragma mark - 开始触摸
@@ -427,7 +375,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 }
 #pragma mark - 结束触摸
 - (void)touchesEndWithPoint:(CGPoint)point {
-
+    
     
 }
 #pragma mark - 拖动
@@ -437,7 +385,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     //分析出用户滑动的方向
     if (self.direction == DirectionNone) {
         if (panPoint.x >= 30 || panPoint.x <= -30) {
-        
+            
         } else if (panPoint.y >= 30 || panPoint.y <= -30) {
             //音量和亮度
             self.direction = DirectionUpOrDown;
@@ -483,128 +431,6 @@ typedef NS_ENUM(NSUInteger, Direction) {
         
     }
 }
-#pragma Selector func
 
-- (void)loadStateDidChange:(NSNotification*)notification {
-    IJKMPMovieLoadState loadState = _player.loadState;
-    
-    if ((loadState & IJKMPMovieLoadStatePlaythroughOK) != 0) {
-        
-        NSLog(@"LoadStateDidChange: IJKMovieLoadStatePlayThroughOK: %d\n",(int)loadState);
-    }else if ((loadState & IJKMPMovieLoadStateStalled) != 0) {
-        
-        NSLog(@"loadStateDidChange: IJKMPMovieLoadStateStalled: %d\n", (int)loadState);
-        
-        if (![self.player isPlaying]) {
-            [self.player prepareToPlay];
-        }
-        
-    } else {
-        NSLog(@"loadStateDidChange: ???: %d\n", (int)loadState);
-    }
-}
-
-- (void)moviePlayBackFinish:(NSNotification*)notification {
-    int reason =[[[notification userInfo] valueForKey:IJKMPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
-    switch (reason) {
-        case IJKMPMovieFinishReasonPlaybackEnded:
-            NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonPlaybackEnded: %d\n", reason);
-            NSLog(@"------777-----");
-            break;
-            
-        case IJKMPMovieFinishReasonUserExited:
-            NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonUserExited: %d\n", reason);
-            NSLog(@"------888-----");
-            break;
-            
-        case IJKMPMovieFinishReasonPlaybackError:
-            //隐藏加载条
-            _loading.hidden = YES;
-            //隐藏封面
-            self.coverImage.hidden = YES;
-            //网络断连层
-            self.hideView.hidden = NO;
-            self.hideView.hideLab.text = @"没有网络，请重新连接网络！";
-            self.hideView.palyBtn.hidden = YES;
-            
-            NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonPlaybackError: %d\n", reason);
-            NSLog(@"------999-----");
-            break;
-            
-        default:
-            NSLog(@"playbackPlayBackDidFinish: ???: %d\n", reason);
-            break;
-    }
-}
-
-- (void)mediaIsPreparedToPlayDidChange:(NSNotification*)notification {
-    //隐藏加载条
-    _loading.hidden = YES;
-    //隐藏封面
-    self.coverImage.hidden = YES;
-
-}
-- (void)moviePlayBackStateDidChange:(NSNotification*)notification {
-    switch (_player.playbackState) {
-        case IJKMPMoviePlaybackStateStopped:
-            
-            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: stoped", (int)_player.playbackState);
-            NSLog(@"------111-----");
-            break;
-            
-        case IJKMPMoviePlaybackStatePlaying:
-            
-            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
-            NSLog(@"------222-----");
-            break;
-            
-        case IJKMPMoviePlaybackStatePaused:
-            
-            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: paused", (int)_player.playbackState);
-            NSLog(@"------333-----");
-            break;
-            
-        case IJKMPMoviePlaybackStateInterrupted:
-            
-            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: interrupted", (int)_player.playbackState);
-            NSLog(@"------444-----");
-            break;
-            
-        case IJKMPMoviePlaybackStateSeekingForward:
-        case IJKMPMoviePlaybackStateSeekingBackward: {
-            
-            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: seeking", (int)_player.playbackState);
-            NSLog(@"------555-----");
-            break;
-        }
-            
-        default: {
-            
-            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: unknown", (int)_player.playbackState);
-            NSLog(@"------666-----");
-            break;
-        }
-    }
-}
-
-#pragma Install Notifiacation
-
-- (void)installMovieNotificationObservers {
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(loadStateDidChange:)   name:IJKMPMoviePlayerLoadStateDidChangeNotification  object:_player];
-    [[NSNotificationCenter defaultCenter] addObserver:self   selector:@selector(moviePlayBackFinish:) name:IJKMPMoviePlayerPlaybackDidFinishNotification  object:_player];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaIsPreparedToPlayDidChange:) name:IJKMPMediaPlaybackIsPreparedToPlayDidChangeNotification   object:_player];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackStateDidChange:) name:IJKMPMoviePlayerPlaybackStateDidChangeNotification  object:_player];
-    
-}
-
-- (void)removeMovieNotificationObservers {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IJKMPMoviePlayerLoadStateDidChangeNotification  object:_player];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IJKMPMoviePlayerPlaybackDidFinishNotification object:_player];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IJKMPMediaPlaybackIsPreparedToPlayDidChangeNotification   object:_player];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IJKMPMoviePlayerPlaybackStateDidChangeNotification object:_player];
-    
-}
 
 @end
