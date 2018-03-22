@@ -32,16 +32,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cover" translatesAutoresizingMaskIntoConstraints="NO" id="Vvb-fR-Xu4">
-                        <rect key="frame" x="15" y="20" width="290" height="126.5"/>
+                        <rect key="frame" x="15" y="10" width="290" height="145.5"/>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Uie-bX-aWL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Dzs-2K-fHO"/>
                     <constraint firstAttribute="trailing" secondItem="13c-P5-szM" secondAttribute="trailing" constant="15" id="K89-gS-5gM"/>
                     <constraint firstItem="Uie-bX-aWL" firstAttribute="top" secondItem="13c-P5-szM" secondAttribute="bottom" constant="15" id="an8-Yu-cet"/>
-                    <constraint firstItem="Vvb-fR-Xu4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="c8z-f3-65O"/>
+                    <constraint firstItem="Vvb-fR-Xu4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="c8z-f3-65O"/>
                     <constraint firstItem="Vvb-fR-Xu4" firstAttribute="leading" secondItem="13c-P5-szM" secondAttribute="leading" id="h0E-sh-rdT"/>
-                    <constraint firstItem="13c-P5-szM" firstAttribute="top" secondItem="Vvb-fR-Xu4" secondAttribute="bottom" constant="19" id="kgK-wR-HGC"/>
+                    <constraint firstItem="13c-P5-szM" firstAttribute="top" secondItem="Vvb-fR-Xu4" secondAttribute="bottom" constant="10" id="kgK-wR-HGC"/>
                     <constraint firstItem="Vvb-fR-Xu4" firstAttribute="width" secondItem="13c-P5-szM" secondAttribute="width" id="kqa-Lo-HbY"/>
                     <constraint firstItem="13c-P5-szM" firstAttribute="leading" secondItem="Uie-bX-aWL" secondAttribute="leading" id="qMK-25-8ka"/>
                     <constraint firstAttribute="bottom" secondItem="Uie-bX-aWL" secondAttribute="bottom" constant="25" id="tNR-Tu-Ceg"/>

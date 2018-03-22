@@ -55,7 +55,7 @@
 }
 #pragma mark ----创建Tableview--
 -(void)initTableView{
-    self.proTableView =[[UITableView alloc]initWithFrame:CGRectMake(0, KSIphonScreenH(185)+SafeAreaTopHeight, KScreenW, KScreenH-SafeAreaTopHeight-KSIphonScreenH(185)-49-SafeAreaBottomHeight)];
+    self.proTableView =[[UITableView alloc]initWithFrame:CGRectMake(0, KSIphonScreenH(140)+SafeAreaTopHeight, KScreenW, KScreenH-SafeAreaTopHeight-KSIphonScreenH(140)-49-SafeAreaBottomHeight)];
     [self.view addSubview:self.proTableView];
     self.proTableView.backgroundColor = [UIColor whiteColor];
     self.proTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
@@ -118,7 +118,7 @@
 }
 #pragma mrak ---- 用户信息view ----
 -(void) initUserInfoView{
-    self.userView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, SafeAreaTopHeight, KScreenW, KSIphonScreenH(185))];
+    self.userView = [[UserInfoView alloc]initWithFrame:CGRectMake(0, SafeAreaTopHeight, KScreenW, KSIphonScreenH(140))];
     [self.view addSubview:self.userView];
 }
 #pragma mark -----设置导航栏----

@@ -197,7 +197,6 @@ typedef NS_ENUM(NSUInteger, Direction) {
     self.hideView.hideBlock = ^{
         
         weakSelf.btnBlock(YES);
-        //[weakSelf txlResume];
     };
     //关闭viwe
     self.hideView.backBlock = ^{
@@ -221,35 +220,34 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if (![workStau isEqualToString:@"NO"]) {
         if ([workStau isEqualToString:@"WIFI"]) {
             self.hideView.hidden = YES;
-            //继续播放
-            self.btnBlock(YES);
             //开始转动
             [self.activeView startAnimating];
             //显示菊花
             self.activeView.hidesWhenStopped = NO;
+            //继续播放
+            self.btnBlock(YES);
         }else{
-            //暂停播放
-            self.btnBlock(NO);
-             
+        
             //显示菊花
             self.activeView.hidesWhenStopped = YES;
             
             self.hideView.hidden = NO;
+            
             self.hideView.hideLab.text = @"使用手机流量会产生资费，是否继续播放!";
+            //暂停播放
+            self.btnBlock(NO);
         }
     }else{
-        self.hideView.hidden = NO;
-        if ([self.url isEqualToString:@""]) {
-            self.hideView.hideLab.text = @"暂无视频！";
-        }else{
-            self.hideView.hideLab.text = @"没有网络，请重新连接网络！";
-        }
-        self.hideView.palyBtn.hidden = YES;
-        self.btnBlock(NO);
         //停止转动
         [self.activeView stopAnimating];
-        //显示菊花
-        self.activeView.hidesWhenStopped = NO;
+        //隐藏菊花
+        self.activeView.hidesWhenStopped = YES;
+        
+        self.hideView.hidden = NO;
+        self.hideView.hideLab.text = @"没有网络，请重新连接网络！";
+        self.hideView.palyBtn.hidden = YES;
+        self.btnBlock(NO);
+       
     }
 }
 #pragma mark------点击了playerView-----------
@@ -325,36 +323,19 @@ typedef NS_ENUM(NSUInteger, Direction) {
     self.hpBlock(sender.selected);
 }
 
-//暂停播放
--(void) txlPause{
-   // [self.player pause];
-    //显示播放遮蔽层
-    self.suspendView.hidden = NO;
-    self.playBtn.hidden = NO;
-}
-
-//恢复播放
--(void) txlResume{
-    
-    self.hideView.hidden = YES;
-    
-    self.suspendView.hidden = YES;
-    
-   // [self.player play];
-    
-}
-
 //继续播放
 -(void)palyBtnAction:(UIButton *) sender{
+    
+    //继续播放
+    self.btnBlock(YES);
+    
     self.coverImage.hidden = YES;
     //隐藏加载条
     self.activeView.hidesWhenStopped = YES;
     [self.activeView stopAnimating];
     
     self.hideView.hidden = YES;
-    //继续播放
-    self.btnBlock(YES);
-    
+   
 }
 #pragma mark -----手势-------
 #pragma mark  -- 音量

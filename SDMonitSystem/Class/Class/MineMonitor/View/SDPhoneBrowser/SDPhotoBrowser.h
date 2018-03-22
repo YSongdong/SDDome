@@ -31,6 +31,14 @@
 @property (nonatomic, assign) NSInteger imageCount;
 @property (nonatomic, weak) id<SDPhotoBrowserDelegate> delegate;
 
+//时间
+@property (nonatomic,strong) NSString *timeStr;
+//名称
+@property (nonatomic,strong) NSString *titleStr;
+
+//YEs 是返回  NO 横屏
+@property (nonatomic,copy) void(^btnBlock)(BOOL isBack);
+
 - (void)show;
 
 @end

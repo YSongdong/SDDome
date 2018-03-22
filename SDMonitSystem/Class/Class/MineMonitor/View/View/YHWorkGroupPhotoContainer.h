@@ -15,6 +15,10 @@
 
 @property (nonatomic, strong) NSArray *picUrlArray;//缩略图URL
 @property (nonatomic, strong) NSArray *picOriArray;//原图url
+//时间
+@property (nonatomic,strong) NSString *timeStr;
+//名称
+@property (nonatomic,strong) NSString *titleStr;
 
 - (instancetype)initWithWidth:(CGFloat)width;
 

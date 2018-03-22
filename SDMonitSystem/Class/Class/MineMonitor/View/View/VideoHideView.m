@@ -34,17 +34,16 @@
     [self addSubview:self.hideView];
     self.hideView.backgroundColor = [UIColor colorWithHexString:@"#292b2e"];
     [self.hideView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.bottom.right.equalTo(self);
+        make.edges.equalTo(weakSelf);
     }];
-    
     
     self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.hideView addSubview:self.backBtn];
     [self.backBtn setImage:[UIImage imageNamed:@"back_wither"] forState:UIControlStateNormal];
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(weakSelf.hideView).offset(10);
-        make.width.equalTo(@40);
-        make.height.equalTo(@20);
+        make.top.equalTo(weakSelf.hideView).offset(10);
+        make.left.equalTo(weakSelf.hideView).offset(10);
+        make.width.height.equalTo(@40);
     }];
     [self.backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     

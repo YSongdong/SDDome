@@ -44,7 +44,7 @@
     [self.headerImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@80);
         make.centerX.equalTo(weakSelf.mas_centerX);
-        make.centerY.equalTo(weakSelf.mas_centerY).offset(-20);
+        make.centerY.equalTo(weakSelf.mas_centerY).offset(-2);
     }];
     self.headerImage.layer.cornerRadius = 40;
     self.headerImage.layer.masksToBounds = YES;
@@ -59,7 +59,7 @@
     self.nameLab = [[UILabel alloc]init];
     [self addSubview:self.nameLab];
     [self.nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_headerImage.mas_bottom).offset(20);
+        make.top.equalTo(_headerImage.mas_bottom).offset(10);
         make.centerX.equalTo(_headerImage.mas_centerX);
     }];
     self.nameLab.textColor =[UIColor colorWithHexString:@"#14baf7"];

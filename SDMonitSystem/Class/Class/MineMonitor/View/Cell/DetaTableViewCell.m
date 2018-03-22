@@ -9,6 +9,7 @@
 #import "DetaTableViewCell.h"
 
 #import "YHWorkGroupPhotoContainer.h"
+#import "SDPhotoBrowser.h"
 
 @interface DetaTableViewCell ()
 
@@ -37,6 +38,7 @@
     __weak typeof(self) weakSelf = self;
     self.titleLab = [UILabel new];
     self.titleLab.textColor = [UIColor blackColor];
+    self.titleLab.numberOfLines = 2;
     self.titleLab.font = [UIFont systemFontOfSize:16];
     [self addSubview:self.titleLab];
     
@@ -46,13 +48,11 @@
     [self addSubview:self.timeLab];
     
     self.imageV  =[[YHWorkGroupPhotoContainer alloc]initWithWidth:KScreenW -20];
-  //  self.imageV.backgroundColor  =[UIColor redColor];
     [self addSubview:self.imageV];
  
     self.imageV.btnBlock = ^(BOOL isBack) {
         weakSelf.btnBlock(isBack);
     };
-    
     
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.equalTo(weakSelf).offset(10);
@@ -74,7 +74,6 @@
     }];
 }
 -(void)setDict:(NSDictionary *)dict{
-    
     _dict = dict;
     
     self.titleLab.text = dict[@"behavior"];
@@ -84,35 +83,52 @@
     self.imageV.picOriArray =arr;
     CGFloat picContainerH = [self.imageV setupPicUrlArray:arr];
     _cstHeightPicContainer.constant = picContainerH;
+    self.imageV.timeStr = self.timeLab.text;
+    self.imageV.titleStr = self.titleLab.text;
 }
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *view = [super hitTest:point withEvent:event];
+
+    if ([view isKindOfClass:[YHWorkGroupPhotoContainer class]]) {
+
+        return self;
+
+    }
+    return [super hitTest:point withEvent:event];
+}
+
 +(CGFloat)cellHeightDict:(NSDictionary *)dict{
+    
     CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width - 20;
     CGFloat viewHeight = 0 ;
-    //名称
-    NSString *nameStr = dict[@"behavior"];
-    CGSize strSize = [nameStr boundingRectWithSize:CGSizeMake(viewWidth, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil].size;
+     //名称
+    UILabel *label = [[UILabel alloc]init];
+    label.font = [UIFont systemFontOfSize:16];
+    label.numberOfLines = 2;
+    label.text = dict[@"behavior"];
+    CGSize strSize = [label.text boundingRectWithSize:CGSizeMake(viewWidth, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil].size;
     
-    viewHeight += strSize.height+10;
-    
+    viewHeight += strSize.height+5;
     //图片
     NSArray *imageArr = dict[@"image_url"];
     if (imageArr.count == 0) {
         viewHeight += 2;
     }else if (imageArr.count < 4){
-        viewHeight += (KScreenW - 20)/3;
+        viewHeight += (KScreenW - 20)/3+2;
     }else  if (imageArr.count < 8){
-        viewHeight += ((KScreenW - 20)/3)*2;
+        viewHeight += ((KScreenW - 20)/3)*2+2;
     }else  if (imageArr.count < 12){
-        viewHeight += ((KScreenW - 20)/3)*3;
+        viewHeight += ((KScreenW - 20)/3)*3+2;
     }else  if (imageArr.count < 16){
-        viewHeight += ((KScreenW - 20)/3)*4;
+        viewHeight += ((KScreenW - 20)/3)*4+2;
     }
     
     //时间
     NSString *timeStr = dict[@"timestamp"];
     CGSize timeSize = [timeStr boundingRectWithSize:CGSizeMake(viewWidth, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
-    viewHeight += timeSize.height + 20;
+    viewHeight += timeSize.height + 10;
     return viewHeight;
 }
 - (void)awakeFromNib {

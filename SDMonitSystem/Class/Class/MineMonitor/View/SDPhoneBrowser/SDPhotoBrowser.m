@@ -31,13 +31,23 @@
 //    UIButton *_saveButton;
     UIActivityIndicatorView *_indicatorView;
     BOOL _willDisappear;
+    
+     UIView *_bigBackView;
+    
+    UIView *_backView;
+    UIButton *_backBtn;
+    UIButton *_hpBtn;
+    //名称
+    UILabel *_titleLab;
+    //时间
+    UILabel *_timeLab;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = SDPhotoBrowserBackgrounColor;
+        self.backgroundColor =[UIColor clearColor];
     }
     return self;
 }
@@ -53,12 +63,37 @@
 
 - (void)setupScrollView
 {
+
+    _backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenW, self.frame.size.height)];
+    _backView.backgroundColor = SDPhotoBrowserBackgrounColor;
+    [self addSubview:_backView];
+    
+
+    _titleLab = [[UILabel alloc]init];
+    [self addSubview:_titleLab];
+    _titleLab.textColor = [UIColor whiteColor];
+    _titleLab.font = [UIFont systemFontOfSize:15];
+    [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_backView).offset(20);
+        make.left.equalTo(_backView).offset(10);
+        make.right.equalTo(_backView).offset(-10);
+    }];
+    
+    _timeLab = [[UILabel alloc]init];
+    [self  addSubview:_timeLab];
+    _timeLab.font = [UIFont systemFontOfSize:13];
+    _timeLab.textColor = [UIColor whiteColor];
+    [_timeLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_titleLab.mas_bottom).offset(5);
+        make.right.equalTo(_backView).offset(-10);
+    }];
+    
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.delegate = self;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
-    [self addSubview:_scrollView];
+    [_backView addSubview:_scrollView];
     
     for (int i = 0; i < self.imageCount; i++) {
         SDBrowserImageView *imageView = [[SDBrowserImageView alloc] init];
@@ -72,40 +107,58 @@
         doubleTap.numberOfTapsRequired = 2;
         
         
-        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewLongPressed:)];
-        
         [singleTap requireGestureRecognizerToFail:doubleTap];
         
         [imageView addGestureRecognizer:singleTap];
         [imageView addGestureRecognizer:doubleTap];
-        [imageView addGestureRecognizer:longPress];
+
         [_scrollView addSubview:imageView];
     }
     
     [self setupImageOfImageViewForIndex:self.currentImageIndex];
     
 }
-
 - (void)dealloc
 {
     [[UIApplication sharedApplication].keyWindow removeObserver:self forKeyPath:@"frame"];
     
 }
+#pragma mark  ---- btn
+-(void)selectdBackBtnAction:(UIButton *) sender{
+    
 
+    self.btnBlock(YES);
+    
+    [self removeFromSuperview];
+    
+}
+-(void)selectHPBtnAction:(UIButton *) sender{
+    
+   self.btnBlock(NO);
+    
+   [self removeFromSuperview];
+    
+    
+}
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
+    __weak typeof(self) weakSelf = self;
+    
     CGRect rect = self.bounds;
     rect.size.width += SDPhotoBrowserImageViewMargin * 2;
     
-    _scrollView.bounds = rect;
-    _scrollView.center = self.center;
-    
+    [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf);
+    }];
     CGFloat y = 0;
     CGFloat w = _scrollView.frame.size.width - SDPhotoBrowserImageViewMargin * 2;
     CGFloat h = _scrollView.frame.size.height;
     
+    
+    _titleLab.text = self.titleStr;
+    _timeLab.text = self.timeStr;
     
     
     [_scrollView.subviews enumerateObjectsUsingBlock:^(SDBrowserImageView *obj, NSUInteger idx, BOOL *stop) {
@@ -168,6 +221,7 @@
     CGRect targetTemp = _scrollView.subviews[self.currentImageIndex].bounds;
     
     tempView.frame = rect;
+
     tempView.contentMode = [_scrollView.subviews[self.currentImageIndex] contentMode];
     _scrollView.hidden = YES;
     
@@ -182,7 +236,6 @@
     }];
 
 }
-
 - (void)showFirstImage
 {
     if ([self hasHighQImage]) {
@@ -217,6 +270,8 @@
         pCtrl.frame =  CGRectMake((self.bounds.size.width-60)/2, self.bounds.size.height-30, 80, 30);
         pCtrl.numberOfPages = self.imageCount;
         [self addSubview:pCtrl];
+        pCtrl.pageIndicatorTintColor = [UIColor TableViewBackGrounpColor];        //设置未激活的指示点颜色
+        pCtrl.currentPageIndicatorTintColor = [UIColor tabBarItemTextColor];
         _pageControl = pCtrl;
     }
    
@@ -259,8 +314,6 @@
     }
     [label performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0];
 }
-
-
 #pragma mark - Gesture
 - (void)photoClick:(UITapGestureRecognizer *)recognizer
 {
@@ -288,9 +341,6 @@
     
     [self addSubview:tempView];
 
-//    _saveButton.hidden = YES;
-    
-    
     [UIView animateWithDuration:SDPhotoBrowserHideImageAnimationDuration delay:0 options:UIViewAnimationOptionTransitionCurlUp animations:^{
         tempView.frame = targetTemp;
         self.backgroundColor = [UIColor clearColor];
@@ -320,7 +370,7 @@
 - (void)show
 {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    self.frame = CGRectMake(0, 310, KScreenW, KScreenH-310);
+    self.frame = CGRectMake(0, SafeAreaHPNaviTopHeight+KSIphonScreenH(220), KScreenW, KScreenH-SafeAreaHPNaviTopHeight-KSIphonScreenH(220));
     [window addObserver:self forKeyPath:@"frame" options:0 context:nil];
     [window addSubview:self];
 }

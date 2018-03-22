@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yj-Gz-CmO">
-                        <rect key="frame" x="56" y="51" width="68" height="15"/>
+                        <rect key="frame" x="56" y="56" width="68" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" 设备数量" image="equi_black">
                             <color key="titleColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6F-Pn-AOQ">
-                        <rect key="frame" x="196" y="50.5" width="68" height="15"/>
+                        <rect key="frame" x="196" y="55.5" width="68" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" 违规次数" image="weigui_black">
                             <color key="titleColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,7 +86,7 @@
                     <constraint firstItem="wuI-D9-6ny" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="AG0-6o-M1s"/>
                     <constraint firstAttribute="trailing" secondItem="6GA-vj-Ahh" secondAttribute="trailing" id="Jm6-1i-P19"/>
                     <constraint firstItem="rzz-WI-Gei" firstAttribute="centerX" secondItem="JdH-Iu-s6e" secondAttribute="centerX" id="KhP-Gr-Vuj"/>
-                    <constraint firstItem="0yj-Gz-CmO" firstAttribute="top" secondItem="rzz-WI-Gei" secondAttribute="bottom" constant="5" id="NN5-H0-Fjg"/>
+                    <constraint firstItem="0yj-Gz-CmO" firstAttribute="top" secondItem="rzz-WI-Gei" secondAttribute="bottom" constant="10" id="NN5-H0-Fjg"/>
                     <constraint firstItem="rzz-WI-Gei" firstAttribute="leading" relation="lessThanOrEqual" secondItem="JdH-Iu-s6e" secondAttribute="leading" constant="5" id="Ohh-dx-pay"/>
                     <constraint firstItem="6GA-vj-Ahh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QgU-pe-SLb"/>
                     <constraint firstItem="T6F-Pn-AOQ" firstAttribute="centerY" secondItem="0yj-Gz-CmO" secondAttribute="centerY" id="Qxc-X7-3Nh"/>

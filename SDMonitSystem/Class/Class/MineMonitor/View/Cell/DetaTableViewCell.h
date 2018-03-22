@@ -13,6 +13,8 @@
 //YEs 是返回  NO 横屏
 @property (nonatomic,copy) void(^btnBlock)(BOOL isBack);
 
+
+
 @property (nonatomic,strong) NSDictionary *dict;
 
 +(CGFloat) cellHeightDict:(NSDictionary *) dict;

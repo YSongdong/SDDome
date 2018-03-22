@@ -20,8 +20,6 @@
 @property (nonatomic,strong) UIView *coverView;
 //时间
 @property (nonatomic,strong) UILabel *timeLab;
-//播放地址
-@property (nonatomic,strong) NSString *url;
 //网络状态
 @property (nonatomic,strong) NSString *netWorkStatu;
 //背景view

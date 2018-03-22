@@ -21,5 +21,8 @@
 
 @property (nonatomic,strong) NSDictionary *dict;
 
+//是否在线
+@property (nonatomic,strong) NSString *online;
+
 
 @end

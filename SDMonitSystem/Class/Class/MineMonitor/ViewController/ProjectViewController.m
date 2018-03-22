@@ -33,6 +33,10 @@
     //创建UITableView
     [self initTableView];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navBarBgAlpha = @"1.0";
+}
 #pragma mark -----设置导航栏----
 -(void) initNaviBar{
     [self customNaviItemTitle:self.projectName titleColor:[UIColor whiteColor]];
@@ -105,6 +109,7 @@
     
     detaVC.deviceID = dict[@"did"];
    
+    detaVC.online = dict[@"online"];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"did"] = dict[@"did"];
     param[@"name"] = dict[@"name"];

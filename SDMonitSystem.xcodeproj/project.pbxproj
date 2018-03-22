@@ -138,7 +138,6 @@
 		155CFE2E2015943800EDD53D /* RuleCountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155CFE262015943800EDD53D /* RuleCountTableViewCell.xib */; };
 		155CFE5F201595B100EDD53D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE5E201595B100EDD53D /* LoginViewController.m */; };
 		155CFE622015BDA900EDD53D /* ForgatPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155CFE612015BDA900EDD53D /* ForgatPwdViewController.m */; };
-		15A33585205EA4D100A0B917 /* ChekImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A33584205EA4D100A0B917 /* ChekImageView.m */; };
 		15B66618202C1C53001E025D /* ShowSpaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B66617202C1C53001E025D /* ShowSpaceView.m */; };
 		15D0CADD204806050077815C /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D0CABD204806050077815C /* MKAnnotationView+WebCache.m */; };
 		15D0CADE204806050077815C /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D0CABF204806050077815C /* NSData+ImageContentType.m */; };
@@ -446,8 +445,6 @@
 		155CFE602015BDA900EDD53D /* ForgatPwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgatPwdViewController.h; sourceTree = "<group>"; };
 		155CFE612015BDA900EDD53D /* ForgatPwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgatPwdViewController.m; sourceTree = "<group>"; };
 		1564F957201F0DFF00CFD7FB /* SystemURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemURL.h; sourceTree = "<group>"; };
-		15A33583205EA4D100A0B917 /* ChekImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChekImageView.h; sourceTree = "<group>"; };
-		15A33584205EA4D100A0B917 /* ChekImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChekImageView.m; sourceTree = "<group>"; };
 		15B66616202C1C53001E025D /* ShowSpaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowSpaceView.h; sourceTree = "<group>"; };
 		15B66617202C1C53001E025D /* ShowSpaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowSpaceView.m; sourceTree = "<group>"; };
 		15D0CABC204806050077815C /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -988,8 +985,6 @@
 				15443A2A20185FBC0011E745 /* VideoHideView.m */,
 				151552CE205E010300EEC12E /* PlayerToolView.h */,
 				151552CF205E010300EEC12E /* PlayerToolView.m */,
-				15A33583205EA4D100A0B917 /* ChekImageView.h */,
-				15A33584205EA4D100A0B917 /* ChekImageView.m */,
 				1504637A205F80F500519501 /* YHWorkGroupPhotoContainer.h */,
 				15046379205F80F500519501 /* YHWorkGroupPhotoContainer.m */,
 			);
@@ -1621,7 +1616,6 @@
 				152B079D2021C70800766B7A /* MJRefreshAutoNormalFooter.m in Sources */,
 				150793A7201F111E00EAA3CD /* ShowCalenarView.m in Sources */,
 				155665052022FF6D0000E78B /* DateValueFormatter.m in Sources */,
-				15A33585205EA4D100A0B917 /* ChekImageView.m in Sources */,
 				150793CA201F11B200EAA3CD /* FSCalendar.m in Sources */,
 				15505FD12017196D0038F81F /* AboutOurViewController.m in Sources */,
 				150793CC201F11B200EAA3CD /* FSCalendarCalculator.m in Sources */,

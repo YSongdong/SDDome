@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "CustTableBarController.h"
 #import "RootNaviController.h"
+#import "DetaViewController.h"
 #import "Reachability.h"
 @interface AppDelegate ()
 
@@ -92,13 +93,14 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-     
+
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 
 }
+
 
 
 @end

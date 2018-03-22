@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" constant="90" id="x1x-bE-fTq"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title=" 违规次数">
+                        <state key="normal" title=" 违规次数" image="weigui_blue">
                             <color key="titleColor" red="0.078431372550000003" green="0.72941176470000002" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
@@ -41,4 +41,7 @@
             <point key="canvasLocation" x="0.0" y="78"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="weigui_blue" width="16" height="14"/>
+    </resources>
 </document>

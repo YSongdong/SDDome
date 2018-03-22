@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" constant="90" id="eOA-cv-PL7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title=" 设备统计">
+                        <state key="normal" title=" 设备统计" image="equi_blue">
                             <color key="titleColor" red="0.078431372550000003" green="0.72549019609999998" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
@@ -41,4 +41,7 @@
             <point key="canvasLocation" x="26" y="139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="equi_blue" width="16" height="14"/>
+    </resources>
 </document>

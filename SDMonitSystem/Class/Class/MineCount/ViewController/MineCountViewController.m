@@ -138,8 +138,8 @@ UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         
-       // return KSIphonScreenH(150);
-        return 150*kWJHeightCoefficient;
+        return 160*kWJHeightCoefficient;
+        
     }
     //判断违规数组存在不
     if (self.violArr.count > 0) {
@@ -180,7 +180,7 @@ UITableViewDataSource
             //自定义选择时间
             _isShowTimeView = !_isShowTimeView;
             if (_isShowTimeView) {
-                self.calenderView = [[ShowCalenarView alloc]initWithFrame:CGRectMake(0, 150*kWJHeightCoefficient, KScreenW, KScreenH)];
+                self.calenderView = [[ShowCalenarView alloc]initWithFrame:CGRectMake(0, 150*kWJHeightCoefficient+10, KScreenW, KScreenH)];
                 self.calenderView.showBlock = ^{
                     
                     weaSelf.isShowTimeView = !weaSelf.isShowTimeView;
@@ -389,7 +389,7 @@ UITableViewDataSource
             [SVProgressHUD dismissWithDelay:1];
             return ;
         }
-       // NSLog(@"-----11111111====%@----",showdata);
+     //   NSLog(@"-----11111111====%@----",showdata);
         NSNumber *code = showdata[@"code"];
         if ([code integerValue] == 0) {
             //删除之前所有数据

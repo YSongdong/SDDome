@@ -36,8 +36,6 @@
         pinch.delegate = self;
         [self addGestureRecognizer:pinch];
         
-
-    
     }
     return self;
 }

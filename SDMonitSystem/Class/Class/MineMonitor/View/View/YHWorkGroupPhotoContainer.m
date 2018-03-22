@@ -8,14 +8,13 @@
 
 #import "YHWorkGroupPhotoContainer.h"
 #import "SDPhotoBrowser.h"
-#import "ChekImageView.h"
 
 @interface YHWorkGroupPhotoContainer ()
 <SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSArray *imageViewsArray;
 @property (nonatomic, assign) CGFloat width;
-@property (nonatomic,strong)  ChekImageView *chekImageV;
+@property (nonatomic,strong) SDPhotoBrowser *photo;
 @end
 
 @implementation YHWorkGroupPhotoContainer
@@ -46,9 +45,9 @@
 {
     NSMutableArray *temp = [NSMutableArray new];
     
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 15; i++) {
         UIImageView *imageView = [UIImageView new];
-        
+    
         [self addSubview:imageView];
         imageView.userInteractionEnabled = YES;
         imageView.tag = i;
@@ -88,7 +87,7 @@
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
         imageView.hidden = NO;
-        [imageView sd_setImageWithURL:obj placeholderImage:[UIImage imageNamed:@"cover"]  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [imageView sd_setImageWithURL:obj placeholderImage:[UIImage imageNamed:@"defut"]  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             if (image.size.width < itemW || image.size.height < itemW) {
                 imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -108,18 +107,21 @@
 
 - (void)tapImageView:(UITapGestureRecognizer *)tap
 {
-    
     UIView *imageView = tap.view;
-    self.chekImageV = [[ChekImageView alloc]initWithFrame:CGRectMake(0, 0, KScreenW, KScreenH)];
-    [[UIApplication sharedApplication].keyWindow addSubview:_chekImageV];
-    self.chekImageV.index = imageView.tag;
-    self.chekImageV.imageArr = self.picUrlArray;
-    [self.chekImageV createUI];
-    
+    self.photo = [[SDPhotoBrowser alloc] init];
+    self.photo.titleStr = self.titleStr;
+    self.photo.timeStr =  self.timeStr;
+    self.photo.currentImageIndex = imageView.tag;
+    self.photo.sourceImagesContainerView = self;
+    self.photo.imageCount = self.picUrlArray.count;
+    self.photo.delegate = self;
+    [self.photo show];
+  
     __weak typeof(self) weakSelf = self;
-    self.chekImageV.btnBlock = ^(BOOL isBack) {
+    self.photo.btnBlock = ^(BOOL isBack) {
         weakSelf.btnBlock(isBack);
     };
+   
 }
 
 //图片宽度
@@ -143,9 +145,7 @@
         return 3;
     }
 }
-
 #pragma mark - SDPhotoBrowserDelegate
-
 - (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index
 {
     NSURL *url = [NSURL new];
