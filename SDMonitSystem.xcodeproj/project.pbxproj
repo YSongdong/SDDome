@@ -30,13 +30,13 @@
 		150793D7201F11B200EAA3CD /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 150793C6201F11B200EAA3CD /* FSCalendarTransitionCoordinator.m */; };
 		150793D8201F11B200EAA3CD /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 150793C8201F11B200EAA3CD /* FSCalendarWeekdayView.m */; };
 		150793DC201F11BC00EAA3CD /* RangePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150793DB201F11BC00EAA3CD /* RangePickerCell.m */; };
+		150DE23120633E7D005C2728 /* ToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 150DE23020633E7D005C2728 /* ToolView.m */; };
 		15113D562057B83A004F6219 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D552057B83A004F6219 /* AudioToolbox.framework */; };
 		15113D582057B875004F6219 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D572057B875004F6219 /* MobileCoreServices.framework */; };
 		15113D5A2057B87E004F6219 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D592057B87E004F6219 /* OpenGLES.framework */; };
 		15113D5C2057B888004F6219 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D5B2057B888004F6219 /* QuartzCore.framework */; };
 		15113D5E2057B897004F6219 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15113D5D2057B897004F6219 /* UIKit.framework */; };
 		151552CD205DF4CF00EEC12E /* DetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 151552CC205DF4CF00EEC12E /* DetaViewController.m */; };
-		151552D0205E010300EEC12E /* PlayerToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 151552CF205E010300EEC12E /* PlayerToolView.m */; };
 		151E3B85206002BF00EEEBE5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 151E3B84206002BF00EEEBE5 /* Reachability.m */; };
 		152B075F2021697A00766B7A /* SumgraphModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B075E2021697A00766B7A /* SumgraphModel.m */; };
 		152B07622021941700766B7A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B07612021941700766B7A /* UserInfo.m */; };
@@ -65,7 +65,6 @@
 		15363211201972EB00270889 /* CountEquiListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15363210201972EB00270889 /* CountEquiListView.m */; };
 		1536321A2019BE4600270889 /* NaviTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 153632192019BE4600270889 /* NaviTitleView.m */; };
 		1536321D2019C92800270889 /* SelectTimeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1536321C2019C92800270889 /* SelectTimeHeaderView.m */; };
-		15443A19201822950011E745 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15443A18201822950011E745 /* TestViewController.swift */; };
 		15443A212018250A0011E745 /* SDPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15443A1F201825090011E745 /* SDPieChartView.m */; };
 		15443A2B20185FBC0011E745 /* VideoHideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15443A2A20185FBC0011E745 /* VideoHideView.m */; };
 		154612F3201F270B006A1A4F /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 154612EA201F270B006A1A4F /* SVIndefiniteAnimatedView.m */; };
@@ -246,6 +245,8 @@
 		150793C8201F11B200EAA3CD /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		150793DA201F11BC00EAA3CD /* RangePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangePickerCell.h; sourceTree = "<group>"; };
 		150793DB201F11BC00EAA3CD /* RangePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangePickerCell.m; sourceTree = "<group>"; };
+		150DE22F20633E7D005C2728 /* ToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolView.h; sourceTree = "<group>"; };
+		150DE23020633E7D005C2728 /* ToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolView.m; sourceTree = "<group>"; };
 		15113D552057B83A004F6219 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		15113D572057B875004F6219 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		15113D592057B87E004F6219 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -253,8 +254,6 @@
 		15113D5D2057B897004F6219 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		151552CB205DF4CF00EEC12E /* DetaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetaViewController.h; sourceTree = "<group>"; };
 		151552CC205DF4CF00EEC12E /* DetaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetaViewController.m; sourceTree = "<group>"; };
-		151552CE205E010300EEC12E /* PlayerToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerToolView.h; sourceTree = "<group>"; };
-		151552CF205E010300EEC12E /* PlayerToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerToolView.m; sourceTree = "<group>"; };
 		151E3B83206002BF00EEEBE5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		151E3B84206002BF00EEEBE5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		152B075D2021697A00766B7A /* SumgraphModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SumgraphModel.h; sourceTree = "<group>"; };
@@ -312,7 +311,6 @@
 		1536321B2019C92800270889 /* SelectTimeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTimeHeaderView.h; sourceTree = "<group>"; };
 		1536321C2019C92800270889 /* SelectTimeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTimeHeaderView.m; sourceTree = "<group>"; };
 		15443A17201822940011E745 /* SDMonitSystem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDMonitSystem-Bridging-Header.h"; sourceTree = "<group>"; };
-		15443A18201822950011E745 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		15443A1F201825090011E745 /* SDPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieChartView.m; sourceTree = "<group>"; };
 		15443A202018250A0011E745 /* SDPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieChartView.h; sourceTree = "<group>"; };
 		15443A2920185FBC0011E745 /* VideoHideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoHideView.h; sourceTree = "<group>"; };
@@ -872,7 +870,6 @@
 				155CFD8020157A7A00EDD53D /* MineCount */,
 				15505FB72016C9800038F81F /* MineSet */,
 				155CFE5B2015958300EDD53D /* Login */,
-				15443A18201822950011E745 /* TestViewController.swift */,
 				15443A17201822940011E745 /* SDMonitSystem-Bridging-Header.h */,
 			);
 			name = Class;
@@ -983,8 +980,8 @@
 				155CFD9920157D3600EDD53D /* UserInfoView.m */,
 				15443A2920185FBC0011E745 /* VideoHideView.h */,
 				15443A2A20185FBC0011E745 /* VideoHideView.m */,
-				151552CE205E010300EEC12E /* PlayerToolView.h */,
-				151552CF205E010300EEC12E /* PlayerToolView.m */,
+				150DE22F20633E7D005C2728 /* ToolView.h */,
+				150DE23020633E7D005C2728 /* ToolView.m */,
 				1504637A205F80F500519501 /* YHWorkGroupPhotoContainer.h */,
 				15046379205F80F500519501 /* YHWorkGroupPhotoContainer.m */,
 			);
@@ -1551,7 +1548,6 @@
 				15F722A520298FCC008BE635 /* DVXAxisView.m in Sources */,
 				154612F6201F270B006A1A4F /* SVProgressHUD.m in Sources */,
 				15505FBC2016CAC90038F81F /* SetLogoView.m in Sources */,
-				15443A19201822950011E745 /* TestViewController.swift in Sources */,
 				15D0CAE7204806050077815C /* UIImage+GIF.m in Sources */,
 				155CFDF620157F5700EDD53D /* MASConstraint.m in Sources */,
 				152B07A42021C70800766B7A /* MJRefreshStateHeader.m in Sources */,
@@ -1579,6 +1575,7 @@
 				152B07A32021C70800766B7A /* MJRefreshNormalHeader.m in Sources */,
 				150793D3201F11B200EAA3CD /* FSCalendarExtensions.m in Sources */,
 				150793CB201F11B200EAA3CD /* FSCalendarAppearance.m in Sources */,
+				150DE23120633E7D005C2728 /* ToolView.m in Sources */,
 				155CFD8E20157BD700EDD53D /* BaseViewController.m in Sources */,
 				15505FBF2016CCCE0038F81F /* SetFunctionView.m in Sources */,
 				152B07A82021C70800766B7A /* UIScrollView+MJExtension.m in Sources */,
@@ -1595,7 +1592,6 @@
 				155CFDF720157F5700EDD53D /* MASConstraintMaker.m in Sources */,
 				15F722A820298FCC008BE635 /* DVLineChartView.m in Sources */,
 				150793D7201F11B200EAA3CD /* FSCalendarTransitionCoordinator.m in Sources */,
-				151552D0205E010300EEC12E /* PlayerToolView.m in Sources */,
 				150793DC201F11BC00EAA3CD /* RangePickerCell.m in Sources */,
 				152B079C2021C70800766B7A /* MJRefreshAutoGifFooter.m in Sources */,
 				155CFDFD20157F5700EDD53D /* View+MASAdditions.m in Sources */,
@@ -1912,7 +1908,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBC1319E8B8CEEC28477638E /* Pods-SDMonitSystemTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDMonitSystemTests/Info.plist;
@@ -1928,7 +1923,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D81E54FD7795D770736BDB0 /* Pods-SDMonitSystemTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDMonitSystemTests/Info.plist;
@@ -1944,7 +1938,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A56AD7EDC8CCF74FEED525B9 /* Pods-SDMonitSystemUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDMonitSystemUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1959,7 +1952,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9F218BEF78BBA790F9BC8FA0 /* Pods-SDMonitSystemUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDMonitSystemUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

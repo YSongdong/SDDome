@@ -17,7 +17,7 @@
 @property (nonatomic,strong) UIButton *backBtn;
 
 //继续播放点击事件
-@property (nonatomic,copy) void(^hideBlock)(void);
+@property (nonatomic,copy) void(^contuneBtnBlock)(void);
 
 //返回点击事件
 @property (nonatomic,copy) void(^backBlock)(void);

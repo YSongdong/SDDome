@@ -80,7 +80,7 @@
 //继续播放
 -(void)continueBtnAction:(UIButton *) sender{
     
-    self.hideBlock();
+    self.contuneBtnBlock();
 }
 //返回按钮
 -(void)backBtnAction:(UIButton *) sender{

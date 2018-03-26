@@ -8,9 +8,9 @@
 
 #import "DetaViewController.h"
 #import <IJKMediaFramework/IJKMediaFramework.h>
-#import "PlayerToolView.h"
 #import "ShowSpaceView.h"
 #import "VideoHideView.h"
+#import "ToolView.h"
 #import "SDPhotoBrowser.h"
 #import "ProTableHeaderView.h"
 #import "DetaTableViewCell.h"
@@ -29,7 +29,7 @@ UIScrollViewDelegate
 //headerView
 @property (nonatomic,strong) ProTableHeaderView *headerView;
 //播放工具VIew
-@property (nonatomic,strong) PlayerToolView *toolView;
+@property (nonatomic,strong) ToolView *playToolView;
 //判断是横屏还是竖屏  YES 横屏 NO 竖屏
 @property (nonatomic,assign) BOOL  isHP;
 @property (nonatomic,strong) UITableView *proTableView;
@@ -74,13 +74,14 @@ UIScrollViewDelegate
     [self initTableView];
     //注册通知
     [self registerNotifi];
-    
+//
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navBarBgAlpha = @"0.0";
+    [self.player prepareToPlay];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -105,7 +106,7 @@ UIScrollViewDelegate
 }
 #pragma mark ---headerView---
 -(void) initHeaderView{
-    self.headerView =[[ProTableHeaderView alloc]initWithFrame:CGRectMake(0, SafeAreaHPNaviTopHeight+CGRectGetHeight(self.toolView.frame)+2, KScreenW, KSIphonScreenH(40))];
+    self.headerView =[[ProTableHeaderView alloc]initWithFrame:CGRectMake(0, SafeAreaHPNaviTopHeight+CGRectGetHeight(self.playToolView.frame)+2, KScreenW, KSIphonScreenH(40))];
     [self.view addSubview:self.headerView];
 }
 #pragma mark -----设置导航栏----
@@ -182,16 +183,21 @@ UIScrollViewDelegate
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (orientation == UIDeviceOrientationLandscapeLeft) {
+        //横屏时需要显示和隐藏view
+        [self selectdHPShowAndHideView];
         
         [self alterVodPlayHPFrame:YES];
-        //移除大图view
-        [self canmeBigImageV];
+      
     }else if (orientation == UIDeviceOrientationLandscapeRight) {
+        //横屏时需要显示和隐藏view
+        [self selectdHPShowAndHideView];
         
         [self alterVodPlayHPFrame:YES];
-        //移除大图view
-         [self canmeBigImageV];
+       
     }else if (orientation == UIDeviceOrientationPortrait) {
+       
+        //竖屏时需要显示和隐藏view
+        [self selectdPorShowAndHideView];
         
         [self alterVodPlayHPFrame:NO];
     }
@@ -206,12 +212,31 @@ UIScrollViewDelegate
     }
     
 }
+//横屏时需要显示和隐藏view
+-(void) selectdHPShowAndHideView{
+    //移除大图view
+    [self canmeBigImageV];
+    //显示横屏顶部视图
+    self.playToolView.topView.hidden = NO;
+    //网络判断层横屏显示返回按钮
+    self.playToolView.networkStatuView.backBtn.hidden = NO;
+}
+//竖屏时需要显示和隐藏view
+-(void) selectdPorShowAndHideView{
+    
+    //隐藏横屏顶部视图
+    self.playToolView.topView.hidden = YES;
+    //网络判断层横屏显示返回按钮
+    self.playToolView.networkStatuView.backBtn.hidden = YES;
+}
+
+
 //网络状态通知事件
 -(void)networkTifi:(NSNotification *) tifi{
     
     NSString *network = [tifi.userInfo objectForKey:@"netwrok"];
 
-    self.toolView.netWorkStatu = network;
+    self.playToolView.netWorkStatu = network;
    
 }
 #pragma mark -----横竖屏处理事件 ------
@@ -244,12 +269,12 @@ UIScrollViewDelegate
     if (isHP) {
         //直播
         self.navigationController.navigationBar.hidden = YES;
-        self.toolView.frame = CGRectMake(0, 0, KScreenW, KScreenH);
-        self.toolView.showView.frame = CGRectMake(SafeAreaHPNaviTopHeight, 0, KScreenW-SafeAreaHPBottomHeight-SafeAreaHPNaviTopHeight, KScreenH);
+        self.playToolView.frame = CGRectMake(0, 0, KScreenW, KScreenH);
+        self.playToolView.showView.frame = CGRectMake(SafeAreaHPNaviTopHeight, 0, KScreenW-SafeAreaHPBottomHeight-SafeAreaHPNaviTopHeight, KScreenH);
         self.hideView.frame =CGRectMake(SafeAreaHPNaviTopHeight, 0, KScreenW-SafeAreaHPBottomHeight-SafeAreaHPNaviTopHeight, KScreenH);
-        self.toolView.coverImage.frame = self.toolView.showView.frame;
-        self.toolView.coverView.frame = self.toolView.showView.frame;
-        self.toolView.backGrouView.frame = self.toolView.showView.frame;
+        self.playToolView.coverImage.frame = self.playToolView.showView.frame;
+        self.playToolView.gestView.frame = self.playToolView.showView.frame;
+        self.playToolView.coverView.frame = self.playToolView.showView.frame;
         self.headerView.hidden = YES;
         self.proTableView.hidden = YES;
         self.topBtn.hidden = YES;
@@ -257,12 +282,12 @@ UIScrollViewDelegate
     }else{
         //直播
         self.navigationController.navigationBar.hidden = NO;
-        self.toolView.frame = CGRectMake(0, 0, KScreenW, KScreenH);
-        self.toolView.showView.frame = CGRectMake(0, SafeAreaHPNaviTopHeight, KScreenW, KSIphonScreenH(220));
+        self.playToolView.frame = CGRectMake(0, 0, KScreenW, KScreenH);
+        self.playToolView.showView.frame = CGRectMake(0, SafeAreaHPNaviTopHeight, KScreenW, KSIphonScreenH(220));
         self.hideView.frame =CGRectMake(0, SafeAreaHPNaviTopHeight, KScreenW, KSIphonScreenH(220));
-        self.toolView.coverImage.frame = self.toolView.showView.frame;
-        self.toolView.coverView.frame = self.toolView.showView.frame;
-        self.toolView.backGrouView.frame = self.toolView.frame;
+        self.playToolView.coverView.frame = self.playToolView.showView.frame;
+        self.playToolView.gestView.frame = self.playToolView.showView.frame;
+        self.playToolView.coverImage.frame = self.playToolView.showView.frame;
         self.headerView.hidden = NO;
         self.proTableView.hidden = NO;
     }
@@ -281,27 +306,25 @@ UIScrollViewDelegate
 }
 -(void)createUI{
     __weak typeof(self) weakSelf = self;
-    //创建toolview
-    self.toolView = [[PlayerToolView alloc]initWithFrame:CGRectMake(0, SafeAreaHPNaviTopHeight, KScreenW, KSIphonScreenH(220))];
-    [self.view addSubview:self.toolView];
+    self.playToolView = [[ToolView alloc]initWithFrame:CGRectMake(0, SafeAreaHPNaviTopHeight, KScreenW, KSIphonScreenH(220))];
+    [self.view addSubview:self.playToolView];
+
     //判断是否播放YES NO
-    self.toolView.btnBlock = ^(BOOL isPlay) {
+    self.playToolView.btnBlock = ^(BOOL isPlay) {
         if (isPlay) {
             //继续播放
+            [weakSelf.player prepareToPlay];
             [weakSelf.player play];
-            weakSelf.toolView.hideView.hidden = YES;
-            weakSelf.toolView.suspendView.hidden = YES;
-
+            weakSelf.playToolView.networkStatuView.hidden = YES;
+        
         }else{
             //暂停播放
             [weakSelf.player pause];
-            weakSelf.toolView.suspendView.hidden = NO;
-            weakSelf.toolView.playBtn.hidden = NO;
-
+            weakSelf.playToolView.playBtn.hidden = NO;
         }
     };
     //判断是否全屏
-    self.toolView.hpBlock = ^(BOOL isHP) {
+    self.playToolView.hpBlock = ^(BOOL isHP) {
         if (isHP) {
             //全屏
             [weakSelf landscapAction:nil];
@@ -316,7 +339,7 @@ UIScrollViewDelegate
         }
     };
     //全屏下返回按钮
-    self.toolView.backBlock = ^(BOOL isBack) {
+    self.playToolView.backBlock = ^(BOOL isBack) {
         if (isBack) {
             [weakSelf portraitAction:nil];
             weakSelf.isHP = NO;
@@ -327,30 +350,41 @@ UIScrollViewDelegate
 -(void) createPlayer:(NSString *)url{
     //播放器
     IJKFFOptions *options = [IJKFFOptions optionsByDefault]; //使用默认配置
+    //如果是rtsp协议，可以优先用tcp(默认是用udp)
     [options setFormatOptionValue:@"tcp" forKey:@"rtsp_transport"];
-//    [options setPlayerOptionIntValue:29.97 forKey:@"r"]; // 帧速率(fps)可以改,确认非标准桢率会导致音画不同步,所以只能设定为15或者29.97)
-//    [options setPlayerOptionIntValue:512 forKey:@"vol"]; // 设置音量大小,256为标准音量。(要设置成两倍音量时则输入512,依此类推
-//    [options setPlayerOptionIntValue:30 forKey:@"max-fps"]; // 最大fps
-//    [options setPlayerOptionIntValue:0 forKey:@"framedrop"]; // 跳帧开关
+    //播放前的探测Size，默认是1M, 改小一点会出画面更快
+    [options setFormatOptionIntValue:1024 * 16 forKey:@"probesize"];
+    //播放前的探测时间
+    [options setFormatOptionIntValue:50000 forKey:@"analyzeduration"];
+    //软解，更稳定
+    [options setPlayerOptionIntValue:0 forKey:@"videotoolbox"];
+    //解码参数，画面更清晰
+    [options setCodecOptionIntValue:IJK_AVDISCARD_DEFAULT forKey:@"skip_loop_filter"];
+    //
+    [options setCodecOptionIntValue:IJK_AVDISCARD_DEFAULT forKey:@"skip_frame"];
+  
     [options setFormatOptionIntValue:1 forKey:@"reconnect"]; // 重连次数
     [options setOptionIntValue:2 forKey:@"videotoolbox" ofCategory:kIJKFFOptionCategoryPlayer];
     
     _player = [[IJKFFMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:url] withOptions:options];
     
+    self.player.shouldAutoplay = NO;
+    
+    [self installMovieNotificationObservers];
+    
     UIView *playerView = [self.player view];
     
-    self.playerView = self.toolView.showView;
+    self.playerView = self.playToolView.showView;
     
-    playerView.frame = self.toolView.showView.frame;
+    playerView.frame = self.playToolView.showView.frame;
     playerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self.playerView insertSubview:playerView atIndex:0];
+    
     //缩放模式为FILL
     //  [_player setScalingMode:IJKMPMovieScalingModeAspectFit];
-    self.player.shouldAutoplay = YES;
-    [self.player prepareToPlay];
-    [self installMovieNotificationObservers];
     
+
 }
 //提示view
 -(void) createAlterView{
@@ -366,7 +400,7 @@ UIScrollViewDelegate
 
 #pragma mark ----UITableView----
 -(void)initTableView{
-    self.proTableView =[[UITableView alloc]initWithFrame:CGRectMake(0,SafeAreaHPNaviTopHeight+CGRectGetHeight(self.toolView.frame)+CGRectGetHeight(self.headerView.frame)+2, KScreenW, KScreenH-CGRectGetHeight(self.toolView.frame)-CGRectGetHeight(self.headerView.frame)-2-SafeAreaHPNaviTopHeight) style:UITableViewStylePlain];
+    self.proTableView =[[UITableView alloc]initWithFrame:CGRectMake(0,SafeAreaHPNaviTopHeight+CGRectGetHeight(self.playToolView.frame)+CGRectGetHeight(self.headerView.frame)+2, KScreenW, KScreenH-CGRectGetHeight(self.playToolView.frame)-CGRectGetHeight(self.headerView.frame)-2-SafeAreaHPNaviTopHeight) style:UITableViewStylePlain];
     [self.view addSubview:self.proTableView];
     
     self.proTableView.separatorColor = [UIColor lineBackGrounpColor];
@@ -444,11 +478,7 @@ UIScrollViewDelegate
     }else if ((loadState & IJKMPMovieLoadStateStalled) != 0) {
         
         NSLog(@"loadStateDidChange: IJKMPMovieLoadStateStalled: %d\n", (int)loadState);
-        
-        if (![self.player isPlaying]) {
-            [self.player prepareToPlay];
-        }
-        
+
     } else {
         NSLog(@"loadStateDidChange: ???: %d\n", (int)loadState);
     }
@@ -459,23 +489,28 @@ UIScrollViewDelegate
     switch (reason) {
         case IJKMPMovieFinishReasonPlaybackEnded:
             NSLog(@"playbackStateDidChange: 播放完毕: %d\n", reason);
+            //结束播放
+            [self.player stop];
             break;
             
         case IJKMPMovieFinishReasonUserExited:
              NSLog(@"playbackStateDidChange: 用户退出播放: %d\n", reason);
+            //结束播放
+            [self.player stop];
+            
             break;
             
         case IJKMPMovieFinishReasonPlaybackError:
             //隐藏加载条
-            self.toolView.activeView.hidesWhenStopped = YES;
-            [self.toolView.activeView stopAnimating];
+            self.playToolView.activeView.hidesWhenStopped = YES;
+            [self.playToolView.activeView stopAnimating];
             //隐藏封面
-            self.toolView.coverImage.hidden = YES;
+            self.playToolView.coverImage.hidden = YES;
             //网络断连层
-            self.toolView.hideView.hidden = NO;
-            self.toolView.hideView.hideLab.text = @"没有网络，请重新连接网络！";
-            self.toolView.hideView.palyBtn.hidden = YES;
-            self.toolView.hideView.backBtn.hidden = NO;
+            self.playToolView.networkStatuView.hidden = NO;
+            self.playToolView.networkStatuView.hideLab.text = @"没有网络，请重新连接网络！";
+            self.playToolView.networkStatuView.palyBtn.hidden = YES;
+            self.playToolView.networkStatuView.backBtn.hidden = NO;
             
             NSLog(@"playbackStateDidChange: 播放出现错误: %d\n", reason);
             break;
@@ -488,10 +523,10 @@ UIScrollViewDelegate
 
 - (void)mediaIsPreparedToPlayDidChange:(NSNotification*)notification {
     //结束转动
-    [self.toolView.activeView stopAnimating];
-    self.toolView.activeView.hidden = YES;
+    [self.playToolView.activeView stopAnimating];
+    self.playToolView.activeView.hidden = YES;
     //隐藏封面
-    self.toolView.coverImage.hidden = YES;
+    self.playToolView.coverImage.hidden = YES;
     
 }
 - (void)moviePlayBackStateDidChange:(NSNotification*)notification {
@@ -503,11 +538,12 @@ UIScrollViewDelegate
             break;
             
         case IJKMPMoviePlaybackStatePlaying:
-            
+            //修改播放按钮的样式
+            self.playToolView.playBtn.selected = YES;
             //停止转动
-            [self.toolView.activeView stopAnimating];
+            [self.playToolView.activeView stopAnimating];
             //隐藏菊花
-            self.toolView.activeView.hidesWhenStopped = YES;
+            self.playToolView.activeView.hidesWhenStopped = YES;
             
             NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
             NSLog(@"------222-----");
@@ -584,11 +620,11 @@ UIScrollViewDelegate
         if ([code integerValue] == 0) {
             NSDictionary *dict = showdata[@"data"];
             //封面
-            [UIImageView sd_setImageView:weakSelf.toolView.coverImage WithURL:weakSelf.dict[@"header_img"]];
+            [UIImageView sd_setImageView:weakSelf.playToolView.coverImage WithURL:weakSelf.dict[@"header_img"]];
             
             //url
             [weakSelf createPlayer:dict[@"rtsp"]];
-         
+          
         }else{
             [SVProgressHUD showErrorWithStatus:showdata[@"msg"]];
             [SVProgressHUD dismissWithDelay:1];
